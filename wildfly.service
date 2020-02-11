@@ -1,0 +1,14 @@
+[Unit]
+Description=Wildfly application server
+After=network.target
+
+[Service]
+Type=simple
+User=wildfly
+Group=wildfly
+ExecStart=/opt/wildfly/bin/standalone.sh
+ExecStop=/opt/wildfly/bin/jboss-cli.sh -c --command=:shutdown
+ExecReload=/opt/wildfly/bin/jboss-cli.sh -c --command=:reload
+
+[Install]
+WantedBy=multi-user.target
